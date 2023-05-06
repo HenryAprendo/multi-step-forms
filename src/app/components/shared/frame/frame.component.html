@@ -5,8 +5,20 @@
 
     </div>
   </header>
-  <main class="main__content bg-green-400 w-full">
+  <main class="main__content bg-magnolia w-full">
   </main>
-  <footer class="footer__content bg-red-300 h-[15vh] md:hidden">
+  <footer class="footer__content bg-alabaster h-[15vh] md:hidden">
+    <ng-content></ng-content>
   </footer>
+</section>
+
+<section class="fixed inset-x-[6%] top-[15vh] bg-white h-80 p-5 rounded-xl shadow-md md:max-w-4xl md:h-[500px] md:inset-y-0 md:m-auto xl:max-w-5xl">
+  <div class="h-full flex flex-col md:flex-row">
+    <div class="hidden h-full md:block">
+      <img class="h-full" src="./../../../../assets/images/bg-sidebar-desktop.svg" alt="">
+    </div>
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </div>
 </section>
