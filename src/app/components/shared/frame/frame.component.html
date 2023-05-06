@@ -1,8 +1,8 @@
 
 <section class="container h-screen w-screen grid grid-rows-[auto_1fr_auto]">
   <header class="header__content w-screen">
-    <div class="h-[30vh] w-full bg-cover bg-center bg-no-repeat md:hidden" style="background-image: url('./../../../../assets/images/bg-sidebar-mobile.svg');">
-
+    <div class="h-[30vh] w-full bg-cover bg-center bg-no-repeat flex justify-center md:hidden" style="background-image: url('./../../../../assets/images/bg-sidebar-mobile.svg');">
+      <app-steps [viewMobileHidden]="true" ></app-steps>
     </div>
   </header>
   <main class="main__content bg-magnolia w-full">
@@ -12,13 +12,16 @@
   </footer>
 </section>
 
-<section class="fixed inset-x-[6%] top-[15vh] bg-white h-80 p-5 rounded-xl shadow-md md:max-w-4xl md:h-[500px] md:inset-y-0 md:m-auto xl:max-w-5xl">
-  <div class="h-full flex flex-col md:flex-row">
-    <div class="hidden h-full md:block">
+<section class="fixed inset-x-[6%] top-[17vh] bg-white h-80 p-5 rounded-xl shadow-md md:max-w-4xl md:h-[500px] md:inset-y-0 md:m-auto xl:max-w-5xl">
+  <section class="h-full flex flex-col md:flex-row">
+    <div class="hidden h-full relative md:block">
       <img class="h-full" src="./../../../../assets/images/bg-sidebar-desktop.svg" alt="">
+      <div class="absolute top-0">
+        <app-steps></app-steps>
+      </div>
     </div>
     <div>
       <ng-content></ng-content>
     </div>
-  </div>
+  </section>
 </section>
