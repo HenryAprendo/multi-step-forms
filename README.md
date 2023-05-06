@@ -33,8 +33,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # Inicio 4-mayo-2023 10 am
 
 # Dia         Horas         Descripcion
-  1             2           Configuración inicial, assets y analisís del proyecto.
-
+  1           4:10 min      Configuración inicial, assets y analisís del proyecto.
+  2           4:30 min      
 
 
 
@@ -42,10 +42,37 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Planeación del desarrollo del proyecto.
 
+1.Cada paso es un componente cargado dinamicamente por ruta.
+2.Cada paso sera un unico componente tanto para mobile, tablet y desktop, con sus respectivas modificaciones.
 
 
 
+# Componentes reutilizables secundarios.
 
+  * Componente de titulo y descripción para cada paso(step).
+  * C. para boton next step, con posibilidad de cambio del label y el color de fondo.
+  * C. Para los indicadores de estado, que presentan el step actual.
+  * C. por cada plan en el step 2.
+  * C. por cada servicio en el step 3. add on.
+  * C. para la pareja de botones back y next step, el cual sera utilizado tanto en el componente principal para desktop y el footer de mobile,
+    interactuando desde fuera con los metodos de redirecionamiento a otras paginas.
+
+
+# Data
+  * step 2 select plan, un array con la informacion de los planes, para luego renderizar. mutable de años a meses por boleano.
+  * step 3 add on, un array con la informacion de los servicios, para luego renderizar. mutable de años a meses por boleano.
+
+
+# Estructura en mobile
+  Header
+  Main
+  Footer
+  Container con posicionamiento
+
+
+# Estructura en desktop
+  Main
+  Container con posicionamiento y aparace el sidebar
 
 
 

@@ -16,9 +16,6 @@ module.exports = {
         'alabaster': '#FAFBFF',
         'white': '#FFFFFF',
       },
-      screens: {
-        '2xl': '1440px'
-      },
       fontFamily: {
         sans: ['Ubuntu', 'sans-serif'],
       }
