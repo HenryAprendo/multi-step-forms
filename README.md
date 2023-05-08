@@ -33,8 +33,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # Inicio 4-mayo-2023 10 am
 
 # Dia         Horas         Descripcion
-  1           4:10 min      Configuración inicial, assets y analisís del proyecto.
-  2           4:30 min      
+  1           4:10          Configuración inicial, assets y analisís del proyecto.
+  2           4:30          Marco base para los formularios
+  3           3:00          Diseñando marco base y componente de pasos
 
 
 

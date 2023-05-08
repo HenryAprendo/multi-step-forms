@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FrameComponent } from './components/shared/frame/frame.component';
+import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: FrameComponent
+    component: PersonalInfoComponent
   }
 ];
 

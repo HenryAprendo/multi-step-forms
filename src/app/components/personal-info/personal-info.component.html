@@ -1,0 +1,40 @@
+
+<app-frame>
+
+  <section class="max-w-md h-auto md:h-[370px] xl:h-[450px]">
+    <form class="h-full w-full flex flex-col">
+      <h1 class="text-marine-blue text-xl font-semibold mb-2" >Personal info</h1>
+      <p class="text-sm text-cool-gray font-medium mb-2">Please provide your name, emai address, and phone number.</p>
+
+      <div>
+        <div class="mb-3">
+          <label class="text-sm text-marine-blue mb-1" for="name">Name</label>
+          <input class="border rounded-md py-2 px-3 w-full" type="text" id="name" name="name">
+          <ng-container></ng-container>
+        </div>
+
+        <div class="mb-3">
+          <label class="text-sm text-marine-blue mb-1" for="email">Email Address</label>
+          <input class="border rounded-md py-2 px-3 w-full" type="email" id="email" name="email" >
+          <ng-container></ng-container>
+        </div>
+
+        <div class="mb-3">
+          <label class="text-sm text-marine-blue mb-1" for="phone">Phone Number</label>
+          <input class="border rounded-md py-2 px-3 w-full" type="tel" id="phone" name="phone">
+          <ng-container></ng-container>
+        </div>
+      </div>
+
+      <div class="flex-grow"></div>
+
+      <div class="self-end">
+        <app-button-action (onClick)="test()">
+          Next Step
+        </app-button-action>
+      </div>
+
+    </form>
+  </section>
+
+</app-frame>

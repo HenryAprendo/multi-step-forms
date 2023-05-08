@@ -7,20 +7,18 @@
   </header>
   <main class="main__content bg-magnolia w-full">
   </main>
-  <footer class="footer__content bg-alabaster h-[15vh] md:hidden">
-    <ng-content></ng-content>
+  <footer class="footer__content bg-alabaster h-20 md:hidden">
   </footer>
 </section>
 
-<section class="fixed inset-x-[6%] top-[17vh] bg-white h-80 p-5 rounded-xl shadow-md md:max-w-4xl md:h-[500px] md:inset-y-0 md:m-auto xl:max-w-5xl">
-  <section class="h-full flex flex-col md:flex-row">
-    <div class="hidden h-full relative md:block">
-      <img class="h-full" src="./../../../../assets/images/bg-sidebar-desktop.svg" alt="">
+<section class="fixed inset-x-[6%] top-[17vh] bg-white h-auto p-5 rounded-xl shadow-md md:max-w-4xl md:h-[450px] md:inset-y-0 md:pr-0 md:m-auto xl:h-[550px] xl:max-w-5xl">
+  <section class="h-full flex flex-col md:flex-row md:items-center">
+    <div class="hidden h-full rounded-lg w-80 relative bg-cover bg-center bg-no-repeat md:block" style="background-image: url('./../../../../assets/images/bg-sidebar-desktop.svg') ;">
       <div class="absolute top-0">
         <app-steps></app-steps>
       </div>
     </div>
-    <div>
+    <div class="w-full flex items-center justify-center">
       <ng-content></ng-content>
     </div>
   </section>
