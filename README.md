@@ -36,6 +36,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   1           4:10          Configuración inicial, assets y analisís del proyecto.
   2           4:30          Marco base para los formularios
   3           3:00          Diseñando marco base y componente de pasos
+  4           4:00          Inicio de component personal info.
 
 
 
