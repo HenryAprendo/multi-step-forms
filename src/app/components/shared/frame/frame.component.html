@@ -19,7 +19,11 @@
       </div>
     </div>
     <div class="w-full flex items-center justify-center">
-      <ng-content></ng-content>
+      <section class="w-full h-auto md:max-w-sm md:h-[370px] xl:h-[450px] xl:max-w-lg">
+        <ng-content>
+          <!-- h-full w-full deben ser colocados en el contenedor principal del componente que sera insertado en el ng-content -->
+        </ng-content>
+      </section>
     </div>
   </section>
 </section>

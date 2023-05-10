@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-      <p class="text-sm text-cool-gray font-medium mb-2">
+      <p class="text-sm text-cool-gray font-medium mb-2 xl:text-base xl:mb-3">
         <ng-content></ng-content>
       </p>
   `,

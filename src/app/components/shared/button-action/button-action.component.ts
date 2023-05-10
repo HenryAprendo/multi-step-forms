@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <button
-      class="fixed right-[6%] bottom-5 py-2 px-3 text-sm rounded-md font-medium bg-marine-blue text-white md:static"
+      class="fixed right-[6%] bottom-5 h-10 py-2 px-3 text-sm rounded-md font-medium bg-marine-blue text-white md:static xl:h-12 xl:px-4 xl:text-base"
       (click)="onClick.emit()"
       type="submit"
     >
