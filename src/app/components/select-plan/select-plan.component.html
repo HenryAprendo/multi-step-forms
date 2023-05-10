@@ -1,0 +1,20 @@
+
+<app-frame>
+  <section class="w-full h-full">
+    <app-form-title>Select your plan</app-form-title>
+    <app-form-description>You have the option of monthly or yearly billing</app-form-description>
+
+    <ul class="space-y-3">
+      <li *ngFor="let plan of plans" class="cursor-pointer">
+        <app-card-plan
+          [plan]="plan"
+          [choosePlan]="chooseMonthYearly"
+          (onSelect)="onPlantSelected($event)"
+          [planId]="selectedId"
+        >
+        </app-card-plan>
+      </li>
+    </ul>
+
+  </section>
+</app-frame>
