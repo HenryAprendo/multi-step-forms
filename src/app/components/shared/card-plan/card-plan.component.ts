@@ -10,15 +10,17 @@ import { Plan } from 'src/app/data/plans';
     <article
       *ngIf="plan"
       (click)="selectedPlan()"
-      class="flex gap-x-2.5 border p-3 rounded-md"
-      [ngClass]="planId === plan.id ? 'bg-magnolia border-marine-blue' : '' "
+      class="flex gap-x-2.5 border p-3 rounded-md md:flex-col md:gap-y-8 xl:gap-y-10"
+      [ngClass]="planId === plan.id ? 'bg-magnolia border-light-blue' : '' "
     >
       <figure>
         <img [src]="plan.image" [alt]="plan.title">
       </figure>
       <div class="-mt-1">
         <h2 class="text-marine-blue text-base font-semibold mb-0" >{{plan.title}}</h2>
-        <p class="text-cool-gray text-sm" >{{choosePlan ? plan.cost * 10 : plan.cost}}{{choosePlan ? '/yr' : '/mo'}}</p>
+        <!-- <p class="text-cool-gray text-sm" > $ {{choosePlan ? plan.cost * 10 : plan.cost }}{{choosePlan ? '/yr' : '/mo'}}</p> -->
+        <p class="text-cool-gray text-sm" *ngIf="!choosePlan" >{{ plan.cost | currency }}/mo</p>
+        <p class="text-cool-gray text-sm" *ngIf="choosePlan" >{{ plan.cost * 10 | currency }}/yr</p>
         <p class="text-xs text-marine-blue font-medium" *ngIf="choosePlan">{{plan.promotions}}</p>
       </div>
     </article>
@@ -27,6 +29,7 @@ import { Plan } from 'src/app/data/plans';
   ]
 })
 export class CardPlanComponent {
+
 
   @Input() plan!:Plan;
 

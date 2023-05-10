@@ -24,7 +24,7 @@ export class SelectPlanComponent {
 
   selectedId = 0;
 
-  chooseMonthYearly = false;
+  chooseMonthYearly = true;
 
   toggleChooseMonthYearly() {
     this.chooseMonthYearly = !this.chooseMonthYearly;
