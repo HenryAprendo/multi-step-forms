@@ -1,10 +1,10 @@
 
 <app-frame>
-  <section class="w-full h-full">
+  <section class="w-full h-full flex flex-col">
     <app-form-title>Select your plan</app-form-title>
     <app-form-description>You have the option of monthly or yearly billing</app-form-description>
 
-    <ul class="space-y-3 md:space-y-0 md:flex md:flex-row md:justify-between md:items-center md:gap-x-5 xl:gap-x-7">
+    <ul class="space-y-3 h-[280px] md:h-48 md:space-y-0 md:flex md:flex-row md:justify-between md:items-center md:gap-x-5 xl:gap-x-9 xl:h-52">
       <li *ngFor="let plan of plans" class="w-auto md:w-1/3 hover:cursor-pointer">
         <app-card-plan
           [plan]="plan"
@@ -15,6 +15,25 @@
         </app-card-plan>
       </li>
     </ul>
+
+
+    <section class="flex gap-x-6 items-center justify-center p-2 bg-magnolia rounded">
+      <span class="text-sm text-cool-gray font-medium" [class.text-marine-blue]="!chooseMonthYearly" >Monthly</span>
+      <!-- Switch -->
+      <div class="w-10 h-5 bg-marine-blue rounded-2xl relative hover:cursor-pointer" (click)="toggleChooseMonthYearly()">
+        <div class="w-4 h-4 rounded-full bg-white absolute top-[2px] left-[2px] ease-out duration-200 transition-all" [ngClass]="chooseMonthYearly ? 'left-[21px]' : '' " ></div>
+      </div>
+      <span class="text-sm text-cool-gray font-medium" [class.text-marine-blue]="chooseMonthYearly">Yearly</span>
+    </section>
+
+
+
+    <div class="flex-grow"></div>
+
+    <div class="flex justify-between">
+      <button class="hidden text-cool-gray font-medium text-sm hover:cursor-pointer hover:text-marine-blue md:block xl:text-base" >Go Back</button>
+      <app-button-action>Next Step</app-button-action>
+    </div>
 
   </section>
 </app-frame>

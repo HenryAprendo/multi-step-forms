@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { FrameComponent } from './../shared/frame/frame.component';
 import { ButtonActionComponent } from './../shared/button-action/button-action.component';
@@ -18,13 +19,16 @@ import { plans, Plan} from './../../data/plans';
 })
 export class SelectPlanComponent {
 
+  router:Router = inject(Router);
+
+  // Lista de planes
   plans: Plan[] = plans.slice();
 
   planSelected!:Plan;
 
   selectedId = 0;
 
-  chooseMonthYearly = true;
+  chooseMonthYearly = false;
 
   toggleChooseMonthYearly() {
     this.chooseMonthYearly = !this.chooseMonthYearly;
@@ -32,6 +36,15 @@ export class SelectPlanComponent {
 
   onPlantSelected(id:number){
     this.selectedId = id;
+  }
+
+  //Métodos Redireccionamiento
+  goBack(){
+    this.router.navigate(['/']);
+  }
+
+  redirectNextStep() {
+    this.router.navigate(['']);
   }
 
 }
