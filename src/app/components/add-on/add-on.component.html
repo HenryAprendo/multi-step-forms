@@ -1,0 +1,58 @@
+
+<app-frame>
+  <form class="w-full h-full flex flex-col " [formGroup]="formOptions" (ngSubmit)="prinnt()">
+    <app-form-title>Pick add-ons</app-form-title>
+    <app-form-description>Add ons help enhance your gaming experiencie.</app-form-description>
+
+    <div class="mt-5">
+      <label class="flex items-center justify-between mb-3 p-3 border rounded-md">
+        <div class="flex items-center gap-x-4">
+          <input type="checkbox" (change)="onCheckboxChange($event)" formArrayName="selectedServiceExtra" value="servicesExtra[0]">
+          <div>
+            <h2 class="text-sm font-medium text-marine-blue">Online service</h2>
+            <p class="text-xs text-cool-gray">Access to multiplayer games</p>
+          </div>
+        </div>
+        <p class="text-xs text-purplish-blue font-medium">
+          +$1/mo
+        </p>
+      </label>
+
+      <label class="flex items-center justify-between mb-3 p-3 border rounded-md">
+        <div class="flex items-center gap-x-4">
+          <input type="checkbox" (change)="onCheckboxChange($event)" formArrayName="selectedServiceExtra" [value]="servicesExtra[1].value">
+          <div>
+            <h2 class="text-sm font-medium text-marine-blue">Larger storage</h2>
+            <p class="text-xs text-cool-gray">Extra 1TB of cloud save</p>
+          </div>
+        </div>
+        <p class="text-xs text-purplish-blue font-medium">
+          +$2/mo
+        </p>
+      </label>
+
+      <label class="flex items-center justify-between mb-3 p-3 border rounded-md">
+        <div class="flex items-center gap-x-4">
+          <input type="checkbox" (change)="onCheckboxChange($event)" formArrayName="selectedServiceExtra" [value]="servicesExtra[2].value" >
+          <div>
+            <h2 class="text-sm font-medium text-marine-blue">Customizable profile</h2>
+            <p class="text-xs text-cool-gray">Custom theme on your profile</p>
+          </div>
+        </div>
+        <p class="text-xs text-purplish-blue font-medium">
+          +$2/mo
+        </p>
+      </label>
+    </div>
+
+    <button type="submit">Test</button>
+
+    <div class="flex-grow"></div>
+
+    <div class="flex justify-between">
+      <button class="hidden text-cool-gray font-medium text-sm hover:cursor-pointer hover:text-marine-blue md:block xl:text-base" >Go Back</button>
+      <app-button-action>Next Step</app-button-action>
+    </div>
+
+  </form>
+</app-frame>
