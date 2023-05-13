@@ -5,6 +5,7 @@ import { FormTitleComponent } from './../shared/form-title/form-title.component'
 import { FormDescriptionComponent } from './../shared/form-description/form-description.component';
 import { ButtonActionComponent } from './../shared/button-action/button-action.component';
 import { ReactiveFormsModule, FormBuilder, FormArray, FormControl} from '@angular/forms';
+import { Route, Router } from '@angular/router';
 
 interface Value {
   name: string;
@@ -57,33 +58,44 @@ export class AddOnComponent {
     },
   ];
 
+  router:Router = inject(Router);
+
   fb:FormBuilder = inject(FormBuilder);
 
-  formOptions = this.fb.group({
-    selectedServiceExtra: new FormArray([])
+  form = this.fb.group({
+    onlineService: [false],
+    largerStorage: [false],
+    customizableProfile: [false]
   });
 
-  onCheckboxChange(event:Event){
-    const selectedServiceExtra = this.formOptions.controls['selectedServiceExtra'] as unknown as FormArray;
-    const element = event.target as HTMLInputElement;
-
-    if(element.checked){
-      selectedServiceExtra.push(new FormControl(element.value))
-    }
-    else {
-      const index = selectedServiceExtra.controls.findIndex(control => control.value === element.value);
-      selectedServiceExtra.removeAt(index);
-    }
-  };
+  planType = 'monthly';
 
 
-  prinnt(){
-    console.log(this.formOptions.value);
+  servicesSelect(){
+    const values = this.form.value;
+    console.log(values);
+  }
+
+  //Métodos Redireccionamiento
+  goBack(){
+    this.router.navigate(['/']);
+  }
+
+  redirectNextStep() {
+    this.router.navigate(['']);
   }
 
 
-
 }
+
+
+
+
+
+
+
+
+
 
 
 

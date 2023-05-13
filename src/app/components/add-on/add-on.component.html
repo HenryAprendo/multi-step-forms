@@ -1,51 +1,55 @@
 
 <app-frame>
-  <form class="w-full h-full flex flex-col " [formGroup]="formOptions" (ngSubmit)="prinnt()">
+  <form class="w-full h-full flex flex-col " [formGroup]="form" (ngSubmit)="servicesSelect()">
     <app-form-title>Pick add-ons</app-form-title>
     <app-form-description>Add ons help enhance your gaming experiencie.</app-form-description>
 
     <div class="mt-5">
-      <label class="flex items-center justify-between mb-3 p-3 border rounded-md">
+      <label class="flex items-center justify-between mb-3 p-3 border rounded-md hover:cursor-pointer "
+        [ngClass]="form.get('onlineService')?.value ? 'bg-magnolia border-purplish-blue': '' "
+      >
         <div class="flex items-center gap-x-4">
-          <input type="checkbox" (change)="onCheckboxChange($event)" formArrayName="selectedServiceExtra" value="servicesExtra[0]">
+          <input type="checkbox" formControlName="onlineService" [value]="servicesExtra[0].id">
           <div>
             <h2 class="text-sm font-medium text-marine-blue">Online service</h2>
             <p class="text-xs text-cool-gray">Access to multiplayer games</p>
           </div>
         </div>
         <p class="text-xs text-purplish-blue font-medium">
-          +$1/mo
+          {{planType === 'monthly' ? '+$1/mo' : '+$10/yr'}}
         </p>
       </label>
 
-      <label class="flex items-center justify-between mb-3 p-3 border rounded-md">
+      <label class="flex items-center justify-between mb-3 p-3 border rounded-md hover:cursor-pointer"
+        [ngClass]="form.get('largerStorage')?.value ? 'bg-magnolia border-purplish-blue': '' "
+      >
         <div class="flex items-center gap-x-4">
-          <input type="checkbox" (change)="onCheckboxChange($event)" formArrayName="selectedServiceExtra" [value]="servicesExtra[1].value">
+          <input type="checkbox" formControlName="largerStorage" [value]="servicesExtra[1].id">
           <div>
             <h2 class="text-sm font-medium text-marine-blue">Larger storage</h2>
             <p class="text-xs text-cool-gray">Extra 1TB of cloud save</p>
           </div>
         </div>
         <p class="text-xs text-purplish-blue font-medium">
-          +$2/mo
+          {{planType === 'monthly' ? '+$2/mo' : '+$20/yr'}}
         </p>
       </label>
 
-      <label class="flex items-center justify-between mb-3 p-3 border rounded-md">
+      <label class="flex items-center justify-between mb-3 p-3 border rounded-md hover:cursor-pointer"
+        [ngClass]="form.get('customizableProfile')?.value ? 'bg-magnolia border-purplish-blue': '' "
+      >
         <div class="flex items-center gap-x-4">
-          <input type="checkbox" (change)="onCheckboxChange($event)" formArrayName="selectedServiceExtra" [value]="servicesExtra[2].value" >
+          <input type="checkbox" formControlName="customizableProfile" [value]="servicesExtra[2].id" >
           <div>
             <h2 class="text-sm font-medium text-marine-blue">Customizable profile</h2>
             <p class="text-xs text-cool-gray">Custom theme on your profile</p>
           </div>
         </div>
         <p class="text-xs text-purplish-blue font-medium">
-          +$2/mo
+          {{planType === 'monthly' ? '+$2/mo' : '+$20/yr' }}
         </p>
       </label>
     </div>
-
-    <button type="submit">Test</button>
 
     <div class="flex-grow"></div>
 
