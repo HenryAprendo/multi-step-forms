@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'add-on',
     component: AddOnComponent
   },
+  {
+    path: 'finishing-up',
+    component: FinishingUpComponent
+  }
 
 ];
 

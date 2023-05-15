@@ -76,20 +76,23 @@ export class AddOnComponent {
       .subscribe(data => this.planType = data);
   }
 
-  planType = '';
+  planType:string = '';
 
   servicesSelect(){
-    const values = this.form.value;
-    console.log(values);
+    const value = this.form.value;
+    if(this.form.valid){
+      this.summaryService.saveServiceAdditional(value);
+      this.redirectNextStep();
+    }
   }
 
   //Métodos Redireccionamiento
   goBack(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/select-plan']);
   }
 
-  redirectNextStep() {
-    this.router.navigate(['']);
+  private redirectNextStep() {
+    this.router.navigate(['/finishing-up']);
   }
 
 

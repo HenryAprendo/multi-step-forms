@@ -59,7 +59,7 @@ export class SelectPlanComponent {
 
   //Métodos Redireccionamiento
   goBack(){
-    this.router.navigate(['/']);
+    this.router.navigate(['../']);
   }
 
   private redirectNextStep() {

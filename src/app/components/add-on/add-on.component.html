@@ -54,7 +54,11 @@
     <div class="flex-grow"></div>
 
     <div class="flex justify-between">
-      <button class="hidden text-cool-gray font-medium text-sm hover:cursor-pointer hover:text-marine-blue md:block xl:text-base" >Go Back</button>
+      <button
+        (click)="goBack()"
+        class="hidden text-cool-gray font-medium text-sm hover:cursor-pointer hover:text-marine-blue md:block xl:text-base" >
+        Go Back
+      </button>
       <app-button-action>Next Step</app-button-action>
     </div>
 

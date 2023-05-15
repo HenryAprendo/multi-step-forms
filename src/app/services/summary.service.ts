@@ -16,6 +16,8 @@ export class SummaryService {
   // almacena el plan seleccionado.
   private plan:Plan|undefined = undefined;
 
+  private serviceAditional = {};
+
   // almacena el tipo de plan seleccionado
   private typePlanSelected:string = '';
 
@@ -51,6 +53,11 @@ export class SummaryService {
         this.typePlanSelected = typePlan;
         this.typePlanChoosed$.next(this.typePlanSelected);
       });
+  }
+
+
+  saveServiceAdditional(data:object){
+    this.serviceAditional = data;
   }
 
 
