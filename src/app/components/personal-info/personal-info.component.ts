@@ -8,6 +8,8 @@ import { ButtonActionComponent } from '../shared/button-action/button-action.com
 import { FormTitleComponent } from './../shared/form-title/form-title.component';
 import { FormDescriptionComponent } from './../shared/form-description/form-description.component';
 
+import { SummaryService } from 'src/app/services/summary.service';
+
 
 @Component({
   selector: 'app-personal-info',
@@ -22,16 +24,19 @@ export class PersonalInfoComponent {
 
   private fb:FormBuilder = inject(FormBuilder);
 
+  private summaryService:SummaryService = inject(SummaryService);
+
   infoPersonal = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(14)]]
   });
 
-  saveInformation(){
+  saveInformation(e:SubmitEvent){
+    e.preventDefault();
     if(this.infoPersonal.valid){
-      // TO DO
-      //Save information and redirect to screen of step
+      this.summaryService.saveInfoPersonal(this.infoPersonal.value);
+      this.redirectNextStep();
     }
     else {
       this.infoPersonal.markAllAsTouched();
@@ -39,7 +44,7 @@ export class PersonalInfoComponent {
   }
 
   private redirectNextStep(){
-    this.router.navigate([''])
+    this.router.navigate(['/select-plan'])
   }
 
   // Field name

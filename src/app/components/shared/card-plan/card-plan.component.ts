@@ -18,10 +18,9 @@ import { Plan } from 'src/app/data/plans';
       </figure>
       <div class="-mt-1">
         <h2 class="text-marine-blue text-base font-semibold mb-0" >{{plan.title}}</h2>
-        <!-- <p class="text-cool-gray text-sm" > $ {{choosePlan ? plan.cost * 10 : plan.cost }}{{choosePlan ? '/yr' : '/mo'}}</p> -->
-        <p class="text-cool-gray text-sm" *ngIf="!choosePlan" >{{ plan.cost | currency }}/mo</p>
-        <p class="text-cool-gray text-sm" *ngIf="choosePlan" >{{ plan.cost * 10 | currency }}/yr</p>
-        <p class="text-xs text-marine-blue font-medium" *ngIf="choosePlan">{{plan.promotions}}</p>
+        <p class="text-cool-gray text-sm" *ngIf="choosePlan === 'monthly' " >{{ plan.cost | currency }}/mo</p>
+        <p class="text-cool-gray text-sm" *ngIf="choosePlan === 'yearly' " >{{ plan.cost * 10 | currency }}/yr</p>
+        <p class="text-xs text-marine-blue font-medium" *ngIf="choosePlan === 'yearly' ">{{plan.promotions}}</p>
       </div>
     </article>
   `,
@@ -34,7 +33,7 @@ export class CardPlanComponent {
   @Input() plan!:Plan;
 
   //Selecciona entre plan mensual y anual
-  @Input() choosePlan:boolean = true;
+  @Input() choosePlan:string = '';
 
   // Identifica el plan seleccionado y agrega clases de estilos
   @Input() planId:number = 0;

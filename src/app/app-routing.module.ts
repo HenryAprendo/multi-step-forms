@@ -8,8 +8,17 @@ import { FinishingUpComponent } from './components/finishing-up/finishing-up.com
 const routes: Routes = [
   {
     path: '',
-    component: FinishingUpComponent
-  }
+    component: PersonalInfoComponent
+  },
+  {
+    path: 'select-plan',
+    component: SelectPlanComponent
+  },
+  {
+    path: 'add-on',
+    component: AddOnComponent
+  },
+
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 
 <app-frame>
 
-  <form  [formGroup]="infoPersonal" (ngSubmit)="saveInformation()" autocomplete="off" class="h-full w-full flex flex-col">
+  <form  [formGroup]="infoPersonal" (ngSubmit)="saveInformation($event)" autocomplete="off" class="h-full w-full flex flex-col">
     <app-form-title>Personal info</app-form-title>
     <app-form-description>Please provide your name, emai address, and phone number.</app-form-description>
 

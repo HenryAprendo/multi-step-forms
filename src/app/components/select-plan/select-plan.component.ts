@@ -9,6 +9,7 @@ import { FormTitleComponent } from './../shared/form-title/form-title.component'
 import { CardPlanComponent } from './../shared/card-plan/card-plan.component';
 
 import { plans, Plan} from './../../data/plans';
+import { SummaryService } from './../../services/summary.service';
 
 @Component({
   selector: 'app-select-plan',
@@ -19,23 +20,41 @@ import { plans, Plan} from './../../data/plans';
 })
 export class SelectPlanComponent {
 
-  router:Router = inject(Router);
+  private summaryService:SummaryService = inject(SummaryService);
+
+  private router:Router = inject(Router);
 
   // Lista de planes
   plans: Plan[] = plans.slice();
 
   planSelected!:Plan;
 
-  selectedId = 0;
+  selectedId = -1;
 
-  chooseMonthYearly = false;
+  // determinan el tipo de plan
+  chooseMonthYearly:boolean = false;
+  typePlan:string = 'monthly';
 
   toggleChooseMonthYearly() {
     this.chooseMonthYearly = !this.chooseMonthYearly;
+    this.typePlan = this.chooseMonthYearly ? 'yearly' : 'monthly'
   }
 
   onPlantSelected(id:number){
     this.selectedId = id;
+  }
+
+  onSaveSelectedPlan(){
+    const id = this.selectedId;
+    const typePlan = this.typePlan;
+
+    if(this.selectedId >= 0){
+      this.summaryService.saveSelectedPlan(id,typePlan);
+      this.redirectNextStep();
+    }
+    else {
+      console.log('Select a plan now for continue');
+    }
   }
 
   //Métodos Redireccionamiento
@@ -43,8 +62,8 @@ export class SelectPlanComponent {
     this.router.navigate(['/']);
   }
 
-  redirectNextStep() {
-    this.router.navigate(['']);
+  private redirectNextStep() {
+    this.router.navigate(['/add-on']);
   }
 
 }

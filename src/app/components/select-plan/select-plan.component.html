@@ -8,14 +8,13 @@
       <li *ngFor="let plan of plans" class="w-auto md:w-1/3 hover:cursor-pointer">
         <app-card-plan
           [plan]="plan"
-          [choosePlan]="chooseMonthYearly"
+          [choosePlan]="typePlan"
           (onSelect)="onPlantSelected($event)"
           [planId]="selectedId"
         >
         </app-card-plan>
       </li>
     </ul>
-
 
     <section class="flex gap-x-6 items-center justify-center p-2 bg-magnolia rounded">
       <span class="text-sm text-cool-gray font-medium" [class.text-marine-blue]="!chooseMonthYearly" >Monthly</span>
@@ -26,13 +25,17 @@
       <span class="text-sm text-cool-gray font-medium" [class.text-marine-blue]="chooseMonthYearly">Yearly</span>
     </section>
 
-
-
     <div class="flex-grow"></div>
 
     <div class="flex justify-between">
       <button class="hidden text-cool-gray font-medium text-sm hover:cursor-pointer hover:text-marine-blue md:block xl:text-base" >Go Back</button>
-      <app-button-action>Next Step</app-button-action>
+      <button
+        class="fixed right-[6%] bottom-5 h-10 py-2 px-3 text-sm rounded-md font-medium bg-marine-blue text-white md:static xl:h-12 xl:px-4 xl:text-base"
+        type="button"
+        (click)="onSaveSelectedPlan()"
+      >
+      Next Step
+    </button>
     </div>
 
   </section>

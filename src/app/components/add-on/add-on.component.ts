@@ -5,7 +5,8 @@ import { FormTitleComponent } from './../shared/form-title/form-title.component'
 import { FormDescriptionComponent } from './../shared/form-description/form-description.component';
 import { ButtonActionComponent } from './../shared/button-action/button-action.component';
 import { ReactiveFormsModule, FormBuilder, FormArray, FormControl} from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { SummaryService } from './../../services/summary.service';
 
 interface Value {
   name: string;
@@ -58,9 +59,11 @@ export class AddOnComponent {
     },
   ];
 
-  router:Router = inject(Router);
+  private summaryService:SummaryService = inject(SummaryService);
 
-  fb:FormBuilder = inject(FormBuilder);
+  private router:Router = inject(Router);
+
+  private fb:FormBuilder = inject(FormBuilder);
 
   form = this.fb.group({
     onlineService: [false],
@@ -68,8 +71,12 @@ export class AddOnComponent {
     customizableProfile: [false]
   });
 
-  planType = 'monthly';
+  constructor(){
+    this.summaryService.planChoosed
+      .subscribe(data => this.planType = data);
+  }
 
+  planType = '';
 
   servicesSelect(){
     const values = this.form.value;

@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <button
       class="fixed right-[6%] bottom-5 h-10 py-2 px-3 text-sm rounded-md font-medium bg-marine-blue text-white md:static xl:h-12 xl:px-4 xl:text-base"
-      (click)="onClick.emit()"
+
       type="submit"
     >
       <ng-content></ng-content>
@@ -18,6 +18,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ButtonActionComponent {
 
-  @Output() onClick = new EventEmitter();
+  // @Output() onClick = new EventEmitter();
 
 }
