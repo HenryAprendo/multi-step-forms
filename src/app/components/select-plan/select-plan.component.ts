@@ -8,8 +8,9 @@ import { FormDescriptionComponent } from './../shared/form-description/form-desc
 import { FormTitleComponent } from './../shared/form-title/form-title.component';
 import { CardPlanComponent } from './../shared/card-plan/card-plan.component';
 
-import { plans, Plan} from './../../data/plans';
+import { plans} from './../../data/plans';
 import { SummaryService } from './../../services/summary.service';
+import { Plan } from 'src/app/interfaces/plan';
 
 @Component({
   selector: 'app-select-plan',

@@ -1,6 +1,27 @@
 
 <app-frame>
-  <app-form-title>Finishing up</app-form-title>
-  <app-form-description>Double-check everything looks OK before confirming.</app-form-description>
+  <section class="w-full h-full">
+    <app-form-title>Finishing up</app-form-title>
+    <app-form-description>Double-check everything looks OK before confirming.</app-form-description>
 
+    <div class="p-5 bg-alabaster rounded-md">
+      <div class="flex justify-between pb-3 border-b border-gray-400">
+        <h2 class="text-sm font-semibold text-marine-blue">{{summary.plan?.title}} {{summary.typePlan === 'monthly' ? '(Monthly)' : '(Yearly)' }}</h2>
+        <p class="text-sm font-semibold text-marine-blue">${{summary.plan?.cost}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
+      </div>
+
+      <ul>
+        <li *ngFor="let item of summary.services" class="flex justify-between my-3 last:mb-0">
+          <p class="text-cool-gray text-sm">{{item.title}}</p>
+          <p class="text-marine-blue text-sm font-medium">+${{item.value.cost}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="flex justify-between p-5">
+      <p class="text-cool-gray text-sm">Total (per year)</p>
+      <p class="text-marine-blue text-base font-semibold" >${{total}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
+    </div>
+
+  </section>
 </app-frame>

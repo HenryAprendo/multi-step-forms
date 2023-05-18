@@ -1,7 +1,11 @@
 import { Injectable, inject } from '@angular/core';
 import { StorePlansService } from './store-plans.service';
-import { Plan } from '../data/plans';
+import { Plan } from './../interfaces/plan';
+import { Extra } from './../interfaces/extra';
 import { BehaviorSubject } from 'rxjs';
+import { servicesExtra } from '../data/services';
+import { Summary } from '../interfaces/summary';
+import { Additional } from '../interfaces/additional';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +20,12 @@ export class SummaryService {
   // almacena el plan seleccionado.
   private plan:Plan|undefined = undefined;
 
-  private serviceAditional = {};
+  // almacena los servicios adicionales
+  private serviceAditional:Additional = {
+    onlineService: false,
+    largerStorage: false,
+    customizableProfile: false
+  };
 
   // almacena el tipo de plan seleccionado
   private typePlanSelected:string = '';
@@ -55,19 +64,49 @@ export class SummaryService {
       });
   }
 
-
-  saveServiceAdditional(data:object){
+  saveServiceAdditional(data:Additional){
     this.serviceAditional = data;
+    console.log(data)
+  }
+
+  showSummaryFinal(): Summary {
+    const summary: Extra[] = [];
+    const servicesExtraNext = servicesExtra.slice();
+
+    if(this.serviceAditional.onlineService){
+      summary.push(servicesExtraNext[0]);
+    }
+
+    if(this.serviceAditional.largerStorage){
+      summary.push(servicesExtraNext[1]);
+    }
+
+    if(this.serviceAditional.customizableProfile){
+      summary.push(servicesExtraNext[2])
+    }
+
+    return {
+      plan: this.plan,
+      services: summary,
+      typePlan: this.typePlanSelected
+    }
+
   }
 
 
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

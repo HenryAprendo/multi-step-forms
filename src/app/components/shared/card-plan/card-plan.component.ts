@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Plan } from 'src/app/data/plans';
+import { Plan } from './../../../interfaces/plan';
 
 @Component({
   selector: 'app-card-plan',

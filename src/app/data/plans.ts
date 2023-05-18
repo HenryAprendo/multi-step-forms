@@ -1,11 +1,5 @@
+import { Plan } from "../interfaces/plan";
 
-export interface Plan {
-  id: number;
-  title: string;
-  cost: number;
-  promotions: string;
-  image: string;
-}
 
 export const plans:Plan[] = [
   {
