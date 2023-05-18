@@ -1,3 +1,4 @@
+
 import { Extra } from "../interfaces/extra";
 
 export const servicesExtra:Array<Extra> = [
@@ -7,7 +8,8 @@ export const servicesExtra:Array<Extra> = [
     value: {
       name: 'Online service',
       description: 'Access to multiplayer games',
-      cost: 1
+      cost: 1,
+      costYearly: 10
     }
   },
   {
@@ -16,7 +18,8 @@ export const servicesExtra:Array<Extra> = [
     value: {
       name: 'Larger storage',
       description: 'Extra 1TB of cloud save',
-      cost: 2
+      cost: 2,
+      costYearly: 20
     }
   },
   {
@@ -25,7 +28,8 @@ export const servicesExtra:Array<Extra> = [
     value: {
       name: 'Customizable profile',
       description: 'Custom theme on your profile',
-      cost: 2
+      cost: 2,
+      costYearly: 20
     }
   },
 ];

@@ -2,6 +2,7 @@ interface Value {
   name: string;
   description: string;
   cost: number;
+  costYearly: number;
 }
 
 export interface Extra {

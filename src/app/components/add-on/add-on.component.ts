@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FrameComponent } from './../shared/frame/frame.component';
 import { FormTitleComponent } from './../shared/form-title/form-title.component';

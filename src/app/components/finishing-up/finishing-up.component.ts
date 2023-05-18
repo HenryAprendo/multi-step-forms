@@ -22,16 +22,26 @@ export class FinishingUpComponent {
 
   summary!:Summary;
 
+  typePlan:string = '';
+
   total!:number;
 
   constructor(){
     this.summary = this.summaryService.showSummaryFinal();
+    this.typePlan = this.summary.typePlan;
     this.calculate();
   }
 
   private calculate(){
-    const costPlan = this.summary.plan?.cost;
-    const costServices = this.summary.services.reduce((acc,actual) => acc + actual.value.cost, 0);
+    let costPlan = this.typePlan === 'monthly' ? this.summary.plan?.cost : this.summary.plan?.cost! * 10;
+    let costServices:number = 0;
+
+    if(this.typePlan === 'monthly'){
+      costServices = this.summary.services.reduce((acc,actual) => acc + actual.value.cost, 0);
+    }
+    else {
+      costServices = this.summary.services.reduce((acc,actual) => acc + actual.value.costYearly, 0);
+    }
     this.total = costPlan! + costServices;
   }
 

@@ -4,23 +4,28 @@
     <app-form-title>Finishing up</app-form-title>
     <app-form-description>Double-check everything looks OK before confirming.</app-form-description>
 
-    <div class="p-5 bg-alabaster rounded-md">
-      <div class="flex justify-between pb-3 border-b border-gray-400">
-        <h2 class="text-sm font-semibold text-marine-blue">{{summary.plan?.title}} {{summary.typePlan === 'monthly' ? '(Monthly)' : '(Yearly)' }}</h2>
-        <p class="text-sm font-semibold text-marine-blue">${{summary.plan?.cost}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
+    <div class="p-5 bg-alabaster rounded-md" *ngIf="summary.plan">
+      <div class="flex justify-between pb-3 border-b border-light-gray">
+        <h2 class="text-sm font-semibold text-marine-blue">{{summary.plan.title}} {{summary.typePlan === 'monthly' ? '(Monthly)' : '(Yearly)' }}</h2>
+        <p class="text-sm font-semibold text-marine-blue">
+          ${{this.typePlan === 'monthly' ? summary.plan.cost : summary.plan.cost! * 10 }}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}
+        </p>
       </div>
 
       <ul>
         <li *ngFor="let item of summary.services" class="flex justify-between my-3 last:mb-0">
           <p class="text-cool-gray text-sm">{{item.title}}</p>
-          <p class="text-marine-blue text-sm font-medium">+${{item.value.cost}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
+          <p class="text-marine-blue text-sm font-medium">
+            +${{summary.typePlan === 'monthly' ? item.value.cost : item.value.costYearly }}
+            {{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}
+          </p>
         </li>
       </ul>
     </div>
 
-    <div class="flex justify-between p-5">
+    <div class="flex justify-between p-5" *ngIf="summary.plan">
       <p class="text-cool-gray text-sm">Total (per year)</p>
-      <p class="text-marine-blue text-base font-semibold" >${{total}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
+      <p class="text-purplish-blue text-lg font-bold" >${{total}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
     </div>
 
   </section>
