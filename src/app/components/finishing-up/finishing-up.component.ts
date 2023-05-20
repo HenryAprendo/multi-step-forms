@@ -6,8 +6,7 @@ import { FormDescriptionComponent } from './../shared/form-description/form-desc
 import { ButtonActionComponent } from './../shared/button-action/button-action.component';
 import { SummaryService } from './../../services/summary.service';
 import { Summary } from './../../interfaces/summary';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-finishing-up',
@@ -18,13 +17,26 @@ import { Summary } from './../../interfaces/summary';
 })
 export class FinishingUpComponent {
 
-  summaryService:SummaryService = inject(SummaryService);
+  private summaryService:SummaryService = inject(SummaryService);
+  private router:Router = inject(Router);
 
+  /**
+   * Almacena el resumén total del plan y servicios escogidos.
+   */
   summary!:Summary;
 
+  /**
+   * Tipo del plan seleccionado
+   */
   typePlan:string = '';
 
+  /**
+   * Costo total de los servicios y plan escogido.
+   */
   total!:number;
+
+  // Se coloca en true cuando el se confirma el envio del formulario.
+  isSending:boolean = false;
 
   constructor(){
     this.summary = this.summaryService.showSummaryFinal();
@@ -32,11 +44,30 @@ export class FinishingUpComponent {
     this.calculate();
   }
 
-  private calculate(){
-    let costPlan = this.typePlan === 'monthly' ? this.summary.plan?.cost : this.summary.plan?.cost! * 10;
-    let costServices:number = 0;
+  /**
+   * Getter que devuelve true si el tipo de plan escogido es "monthly", util para plantilla.
+   */
+  get activePlan(){
+    return this.summary.typePlan === 'monthly';
+  }
 
-    if(this.typePlan === 'monthly'){
+  onConfirmShopping() {
+    // todo
+    this.isSending = !this.isSending;
+  }
+
+  goBack() {
+    this.router.navigate(['/add-on']);
+  }
+
+  /**
+   * Método para el calcular el costo total del plan y servicios extra.
+  */
+ private calculate(){
+   let costPlan = this.activePlan ? this.summary.plan?.cost : this.summary.plan?.cost! * 10;
+   let costServices:number = 0;
+
+   if(this.typePlan === 'monthly'){
       costServices = this.summary.services.reduce((acc,actual) => acc + actual.value.cost, 0);
     }
     else {
@@ -45,7 +76,16 @@ export class FinishingUpComponent {
     this.total = costPlan! + costServices;
   }
 
+
+
 }
+
+
+
+
+
+
+
 
 
 

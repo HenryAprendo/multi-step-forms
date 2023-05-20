@@ -1,32 +1,75 @@
 
 <app-frame>
-  <section class="w-full h-full">
-    <app-form-title>Finishing up</app-form-title>
-    <app-form-description>Double-check everything looks OK before confirming.</app-form-description>
+  <ng-container *ngIf="!isSending; else message">
+    <section class="w-full h-full flex flex-col">
+      <app-form-title>Finishing up</app-form-title>
+      <app-form-description>Double-check everything looks OK before confirming.</app-form-description>
 
-    <div class="p-5 bg-alabaster rounded-md" *ngIf="summary.plan">
-      <div class="flex justify-between pb-3 border-b border-light-gray">
-        <h2 class="text-sm font-semibold text-marine-blue">{{summary.plan.title}} {{summary.typePlan === 'monthly' ? '(Monthly)' : '(Yearly)' }}</h2>
-        <p class="text-sm font-semibold text-marine-blue">
-          ${{this.typePlan === 'monthly' ? summary.plan.cost : summary.plan.cost! * 10 }}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}
-        </p>
+      <div class="p-5 bg-alabaster rounded-md" *ngIf="summary.plan">
+        <div class="flex justify-between pb-3 border-b border-light-gray">
+          <h2 class="text-sm font-semibold text-marine-blue">{{summary.plan.title}} {{ activePlan ? '(Monthly)' : '(Yearly)' }}</h2>
+          <p class="text-sm font-semibold text-marine-blue">
+            ${{activePlan ? summary.plan.cost : summary.plan.cost! * 10 }}{{ activePlan ? '/Mo' : '/Yr' }}
+          </p>
+        </div>
+
+        <ul>
+          <li *ngFor="let item of summary.services" class="flex justify-between my-3 last:mb-0">
+            <p class="text-cool-gray text-sm">{{item.title}}</p>
+            <p class="text-marine-blue text-sm font-medium">
+              +${{activePlan ? item.value.cost : item.value.costYearly }}
+              {{activePlan ? '/Mo' : '/Yr' }}
+            </p>
+          </li>
+        </ul>
       </div>
 
-      <ul>
-        <li *ngFor="let item of summary.services" class="flex justify-between my-3 last:mb-0">
-          <p class="text-cool-gray text-sm">{{item.title}}</p>
-          <p class="text-marine-blue text-sm font-medium">
-            +${{summary.typePlan === 'monthly' ? item.value.cost : item.value.costYearly }}
-            {{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}
-          </p>
-        </li>
-      </ul>
-    </div>
+      <div class="flex justify-between p-5" *ngIf="summary.plan">
+        <p class="text-cool-gray text-sm">Total {{activePlan ? '(per month)' : '(per year)' }}</p>
+        <p class="text-purplish-blue text-lg font-bold" >${{total}}{{ activePlan ? '/Mo' : '/Yr' }}</p>
+      </div>
 
-    <div class="flex justify-between p-5" *ngIf="summary.plan">
-      <p class="text-cool-gray text-sm">Total (per year)</p>
-      <p class="text-purplish-blue text-lg font-bold" >${{total}}{{summary.typePlan === 'monthly' ? '/Mo' : '/Yr' }}</p>
-    </div>
+      <div class="flex-grow"></div>
 
-  </section>
+      <div class="flex justify-between">
+        <button
+          (click)="goBack()"
+          class="hidden text-cool-gray font-medium text-sm hover:cursor-pointer hover:text-marine-blue md:block xl:text-base" >
+          Go Back
+        </button>
+
+        <button
+          class="fixed right-[6%] bottom-5 h-10 py-2 px-3 text-sm rounded-md font-medium bg-marine-blue text-white md:static xl:h-12 xl:px-4 xl:text-base"
+          type="button"
+          (click)="onConfirmShopping()"
+        >
+        Confirm
+        </button>
+      </div>
+
+    </section>
+  </ng-container>
 </app-frame>
+
+<ng-template #message>
+  <div class="w-full h-80 flex flex-col items-center justify-center gap-y-4 px-2 py-8 text-center bg-white md:h-full">
+    <img class="h-12 w-12" src="./../../../assets/images/icon-thank-you.svg" alt="icon-thanks">
+    <h2 class="text-marine-blue text-2xl font-semibold">Thank you!</h2>
+    <p class="text-cool-gray text-base">
+      Thanks for confirming your subscription!
+      We hope you have fun using our platform.
+      If you ever need support, please fell free to email us at
+      support@loremgaming.com.
+    </p>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
