@@ -7,7 +7,12 @@
     class="flex flex-row items-center "
     *ngFor="let step of steps"
   >
-    <div class="h-8 w-8 rounded-full border flex items-center justify-center text-white">{{step.value}}</div>
+    <div
+      class="h-8 w-8 rounded-full border flex items-center justify-center text-white "
+      [ngClass]="step.id === selectedId ? 'bg-light-blue text-black' : '' "
+    >
+      {{step.value}}
+    </div>
     <div class="ml-4" *ngIf="!viewMobileHidden">
       <p class="uppercase text-xs text-pastel-blue">{{step.name}}</p>
       <h2 class="uppercase text-xs font-semibold text-white">{{step.title}}</h2>

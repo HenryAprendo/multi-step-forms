@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,8 +8,8 @@ import { ButtonActionComponent } from '../shared/button-action/button-action.com
 import { FormTitleComponent } from './../shared/form-title/form-title.component';
 import { FormDescriptionComponent } from './../shared/form-description/form-description.component';
 
-import { SummaryService } from 'src/app/services/summary.service';
-
+import { SummaryService } from './../../services/summary.service';
+import { ActiveStepService } from './../../services/active-step.service';
 
 @Component({
   selector: 'app-personal-info',
@@ -26,16 +26,20 @@ export class PersonalInfoComponent {
 
   private summaryService:SummaryService = inject(SummaryService);
 
+  private activeStepService:ActiveStepService = inject(ActiveStepService);
+
   infoPersonal = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(14)]]
   });
 
+
   saveInformation(e:SubmitEvent){
     e.preventDefault();
     if(this.infoPersonal.valid){
       this.summaryService.saveInfoPersonal(this.infoPersonal.value);
+      this.activeStepService.setNextValue();
       this.redirectNextStep();
     }
     else {

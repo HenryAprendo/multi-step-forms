@@ -7,6 +7,7 @@ import { ButtonActionComponent } from './../shared/button-action/button-action.c
 import { SummaryService } from './../../services/summary.service';
 import { Summary } from './../../interfaces/summary';
 import { Router } from '@angular/router';
+import { ActiveStepService } from './../../services/active-step.service';
 
 @Component({
   selector: 'app-finishing-up',
@@ -19,6 +20,7 @@ export class FinishingUpComponent {
 
   private summaryService:SummaryService = inject(SummaryService);
   private router:Router = inject(Router);
+  private activeStepService:ActiveStepService = inject(ActiveStepService);
 
   /**
    * Almacena el resumén total del plan y servicios escogidos.
@@ -57,6 +59,7 @@ export class FinishingUpComponent {
   }
 
   goBack() {
+    this.activeStepService.setBeforeValue();
     this.router.navigate(['/add-on']);
   }
 

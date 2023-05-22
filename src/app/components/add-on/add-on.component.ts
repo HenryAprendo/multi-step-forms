@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { SummaryService } from './../../services/summary.service';
 import { servicesExtra } from './../../data/services';
 import { Extra } from './../../interfaces/extra';
+import { ActiveStepService } from './../../services/active-step.service';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class AddOnComponent {
 
   private fb:FormBuilder = inject(FormBuilder);
 
+  private activeStepService:ActiveStepService = inject(ActiveStepService);
+
   form = this.fb.group({
     onlineService: [false],
     largerStorage: [false],
@@ -45,12 +48,14 @@ export class AddOnComponent {
     const value = this.form.value;
     if(this.form.valid){
       this.summaryService.saveServiceAdditional(value);
+      this.activeStepService.setNextValue();
       this.redirectNextStep();
     }
   }
 
   //Métodos Redireccionamiento
   goBack(){
+    this.activeStepService.setBeforeValue();
     this.router.navigate(['/select-plan']);
   }
 

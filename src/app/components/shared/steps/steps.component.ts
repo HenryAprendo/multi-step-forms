@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActiveStepService } from './../../../services/active-step.service';
 
 interface Step {
   id: number;
@@ -42,11 +43,22 @@ const dataSteps:Step[] = [
   templateUrl: './steps.component.html',
   styleUrls: ['./steps.component.scss']
 })
-export class StepsComponent {
+export class StepsComponent implements OnInit {
+
+  private activeStepService:ActiveStepService = inject(ActiveStepService);
 
   steps:Step[] = dataSteps.slice();
 
   @Input() viewMobileHidden:boolean = false;
+
+  selectedId:number = 0;
+
+  ngOnInit(): void {
+    this.activeStepService.valueId
+      .subscribe(value => {
+        this.selectedId = value;
+      });
+  }
 
 }
 

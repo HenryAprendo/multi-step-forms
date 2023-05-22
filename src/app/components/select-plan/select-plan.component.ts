@@ -10,7 +10,8 @@ import { CardPlanComponent } from './../shared/card-plan/card-plan.component';
 
 import { plans} from './../../data/plans';
 import { SummaryService } from './../../services/summary.service';
-import { Plan } from 'src/app/interfaces/plan';
+import { Plan } from './../../interfaces/plan';
+import { ActiveStepService } from './../../services/active-step.service';
 
 @Component({
   selector: 'app-select-plan',
@@ -24,6 +25,8 @@ export class SelectPlanComponent {
   private summaryService:SummaryService = inject(SummaryService);
 
   private router:Router = inject(Router);
+
+  private activeStepService:ActiveStepService = inject(ActiveStepService);
 
   // Lista de planes
   plans: Plan[] = plans.slice();
@@ -51,6 +54,7 @@ export class SelectPlanComponent {
 
     if(this.selectedId >= 0){
       this.summaryService.saveSelectedPlan(id,typePlan);
+      this.activeStepService.setNextValue();
       this.redirectNextStep();
     }
     else {
@@ -60,6 +64,7 @@ export class SelectPlanComponent {
 
   //Métodos Redireccionamiento
   goBack(){
+    this.activeStepService.setBeforeValue();
     this.router.navigate(['../']);
   }
 
