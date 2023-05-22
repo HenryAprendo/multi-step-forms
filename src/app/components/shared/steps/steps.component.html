@@ -8,8 +8,8 @@
     *ngFor="let step of steps"
   >
     <div
-      class="h-8 w-8 rounded-full border flex items-center justify-center text-white "
-      [ngClass]="step.id === selectedId ? 'bg-light-blue text-black' : '' "
+      class="h-8 w-8 rounded-full border flex items-center justify-center "
+      [ngClass]="step.id === selectedId ? 'bg-light-blue text-black' : 'text-white' "
     >
       {{step.value}}
     </div>
