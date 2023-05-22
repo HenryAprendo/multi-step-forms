@@ -6,6 +6,10 @@ import { AddOnComponent } from './components/add-on/add-on.component';
 import { FinishingUpComponent } from './components/finishing-up/finishing-up.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: SelectPlanComponent
+  // },
   {
     path: '',
     component: PersonalInfoComponent

@@ -20,7 +20,7 @@
       <span class="text-sm text-cool-gray font-medium" [class.text-marine-blue]="!chooseMonthYearly" >Monthly</span>
       <!-- Switch -->
       <div class="w-10 h-5 bg-marine-blue rounded-2xl relative hover:cursor-pointer" (click)="toggleChooseMonthYearly()">
-        <div class="w-4 h-4 rounded-full bg-white absolute top-[2px] left-[2px] ease-out duration-200 transition-all" [ngClass]="chooseMonthYearly ? 'left-[21px]' : '' " ></div>
+        <div class="w-4 h-4 rounded-full bg-white absolute top-[2px] ease-out duration-200 transition-all" [ngClass]="chooseMonthYearly ? 'left-[21px]' : 'left-[2px]' " ></div>
       </div>
       <span class="text-sm text-cool-gray font-medium" [class.text-marine-blue]="chooseMonthYearly">Yearly</span>
     </section>
