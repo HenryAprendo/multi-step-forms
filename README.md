@@ -26,56 +26,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## Deploy
 
-
-
-# Horas de trabajo. 
-# Inicio 4-mayo-2023 10 am
-
-# Dia         Horas         Descripcion
-  1           4:10          Configuración inicial, assets y analisís del proyecto.
-  2           4:30          Marco base para los formularios
-  3           3:00          Diseñando marco base y componente de pasos
-  4           4:00          Inicio de component personal info.
-  5           2:30          Validación de campos y métodos de redireccionamiento.
-  6           4:00          Inicio de componente de seleccionar planes
-
-
-
-# Planeación del desarrollo del proyecto.
-
-1.Cada paso es un componente cargado dinamicamente por ruta.
-2.Cada paso sera un unico componente tanto para mobile, tablet y desktop, con sus respectivas modificaciones.
-
-
-
-# Componentes reutilizables secundarios.
-
-  * Componente de titulo y descripción para cada paso(step).
-  * C. para boton next step, con posibilidad de cambio del label y el color de fondo.
-  * C. Para los indicadores de estado, que presentan el step actual.
-  * C. por cada plan en el step 2.
-  * C. por cada servicio en el step 3. add on.
-  * C. para la pareja de botones back y next step, el cual sera utilizado tanto en el componente principal para desktop y el footer de mobile,
-    interactuando desde fuera con los metodos de redirecionamiento a otras paginas.
-
-
-# Data
-  * step 2 select plan, un array con la informacion de los planes, para luego renderizar. mutable de años a meses por boleano.
-  * step 3 add on, un array con la informacion de los servicios, para luego renderizar. mutable de años a meses por boleano.
-
-
-# Estructura en mobile
-  Header
-  Main
-  Footer
-  Container con posicionamiento
-
-
-# Estructura en desktop
-  Main
-  Container con posicionamiento y aparace el sidebar
-
+Project Console: https://console.firebase.google.com/project/multi-step-form-800a8/overview
+Hosting URL: https://multi-step-form-800a8.web.app
 
 
 
