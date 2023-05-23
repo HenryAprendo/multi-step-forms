@@ -3,7 +3,7 @@
 
   <form  [formGroup]="infoPersonal" (ngSubmit)="saveInformation($event)" autocomplete="off" class="h-full w-full flex flex-col">
     <app-form-title>Personal info</app-form-title>
-    <app-form-description>Please provide your name, emai address, and phone number.</app-form-description>
+    <app-form-description>Please provide your name, email address, and phone number.</app-form-description>
 
     <div>
       <div class="mb-3 relative xl:mb-4">
@@ -21,6 +21,7 @@
         <ng-container *ngIf="fieldNameInvalid">
           <div class="absolute top-1 right-0">
             <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldName?.hasError('required')" >This field is required</p>
+            <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldName?.hasError('pattern')" >Only letters</p>
           </div>
         </ng-container>
       </div>
@@ -60,8 +61,9 @@
         <ng-container *ngIf="fieldPhoneInvalid">
           <div class="absolute top-1 right-0">
             <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldPhone?.hasError('required')">This field is required</p>
-            <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldPhone?.hasError('minlength')">Minimum 7 numbers</p>
-            <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldPhone?.hasError('maxlength')">Maximum 10 numbers</p>
+            <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldPhone?.hasError('pattern')">Only numbers, minimum 7 and maximum 14 digits</p>
+            <!-- <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldPhone?.hasError('minlength')">Minimum 7 numbers</p> -->
+            <!-- <p class="text-xs font-semibold text-strawberry-res" *ngIf="fieldPhone?.hasError('maxlength')">Maximum 14 numbers</p> -->
           </div>
         </ng-container>
       </div>

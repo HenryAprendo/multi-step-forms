@@ -29,11 +29,12 @@ export class PersonalInfoComponent {
   private activeStepService:ActiveStepService = inject(ActiveStepService);
 
   infoPersonal = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(14)]]
+    name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')] ],
+    email: ['', [Validators.required, Validators.email] ],
+    phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(14), Validators.pattern('^[0-9]{7,14}$')] ]
   });
 
+  // /^\d{7,14}$/
 
   saveInformation(e:SubmitEvent){
     e.preventDefault();
